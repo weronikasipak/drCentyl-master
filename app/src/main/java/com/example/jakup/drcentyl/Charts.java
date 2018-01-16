@@ -99,7 +99,8 @@ public class Charts extends AppCompatActivity {
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
-        ArrayList<String> xAXES = new ArrayList<>();
+        Highlight highlight = null;
+
         ArrayList<Entry> yAX97 = new ArrayList<>();
         ArrayList<Entry> yAX90 = new ArrayList<>();
         ArrayList<Entry> yAX75 = new ArrayList<>();
@@ -117,6 +118,7 @@ public class Charts extends AppCompatActivity {
         float function25;
         float function10;
         float function3;
+        float add = (float) 0.1;;
 
         double x = 1 ;
         int values = 0;
@@ -128,7 +130,7 @@ public class Charts extends AppCompatActivity {
                 yAXpoint.add(c1e1);
 
                 values = 12;
-                for (int i = 0; i < values; i++) {
+                for (float i = 1; x < values; i = i+add) {
                     function97 = Float.parseFloat(String.valueOf(boysHeight12_97(x)));
                     function90 = Float.parseFloat(String.valueOf(boysHeight12_90(x)));
                     function75 = Float.parseFloat(String.valueOf(boysHeight12_75(x)));
@@ -137,7 +139,7 @@ public class Charts extends AppCompatActivity {
                     function10 = Float.parseFloat(String.valueOf(boysHeight12_10(x)));
                     function3 = Float.parseFloat(String.valueOf(boysHeight12_3(x)));
 
-                    x = x + 1.0;
+                    x = x + 0.1;
 
                     yAX97.add(new Entry(i, function97));
                     yAX90.add(new Entry(i, function90));
@@ -146,15 +148,14 @@ public class Charts extends AppCompatActivity {
                     yAX25.add(new Entry(i, function25));
                     yAX10.add(new Entry(i, function10));
                     yAX3.add(new Entry(i, function3));
-
-                    xAXES.add(i, String.valueOf(x));
                 }
             } else { //boys height 1-18 years
+
                 Entry c1e1 = new Entry(ageAmount, heightAmount);
                 yAXpoint.add(c1e1);
 
-                values = 18;
-                for (int i = 0; i < values; i++) {
+                values = 17;
+                for (float i = 1; x < values; i = i+add) {
                     function97 = Float.parseFloat(String.valueOf(boysHeight18_97(x)));
                     function90 = Float.parseFloat(String.valueOf(boysHeight18_90(x)));
                     function75 = Float.parseFloat(String.valueOf(boysHeight18_75(x)));
@@ -163,7 +164,7 @@ public class Charts extends AppCompatActivity {
                     function10 = Float.parseFloat(String.valueOf(boysHeight18_10(x)));
                     function3 = Float.parseFloat(String.valueOf(boysHeight18_3(x)));
 
-                    x = x + 1.0;
+                    x = x + 0.1;
 
                     yAX97.add(new Entry(i, function97));
                     yAX90.add(new Entry(i, function90));
@@ -172,8 +173,6 @@ public class Charts extends AppCompatActivity {
                     yAX25.add(new Entry(i, function25));
                     yAX10.add(new Entry(i, function10));
                     yAX3.add(new Entry(i, function3));
-
-                    xAXES.add(i, String.valueOf(x));
                 }
             }
             else { //charts for girls height
@@ -182,7 +181,7 @@ public class Charts extends AppCompatActivity {
                     yAXpoint.add(c1e1);
 
                     values = 12;
-                    for (int i = 0; i < values; i++) {
+                    for (float i = 1; x < values; i = i+add) {
                         function97 = Float.parseFloat(String.valueOf(girlsHeight12_97(x)));
                         function90 = Float.parseFloat(String.valueOf(girlsHeight12_90(x)));
                         function75 = Float.parseFloat(String.valueOf(girlsHeight12_75(x)));
@@ -191,7 +190,7 @@ public class Charts extends AppCompatActivity {
                         function10 = Float.parseFloat(String.valueOf(girlsHeight12_10(x)));
                         function3 = Float.parseFloat(String.valueOf(girlsHeight12_3(x)));
 
-                        x = x + 1.0;
+                        x = x + 0.1;
 
                         yAX97.add(new Entry(i, function97));
                         yAX90.add(new Entry(i, function90));
@@ -200,15 +199,13 @@ public class Charts extends AppCompatActivity {
                         yAX25.add(new Entry(i, function25));
                         yAX10.add(new Entry(i, function10));
                         yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
                     }
                 } else { //girls height 1-18 years
                     Entry c1e1 = new Entry(ageAmount, heightAmount);
                     yAXpoint.add(c1e1);
 
-                    values = 18;
-                    for (int i = 0; i < values; i++) {
+                    values = 17;
+                    for (float i = 1; x < values; i = i+add) {
                         function97 = Float.parseFloat(String.valueOf(girlsHeight18_97(x)));
                         function90 = Float.parseFloat(String.valueOf(girlsHeight18_90(x)));
                         function75 = Float.parseFloat(String.valueOf(girlsHeight18_75(x)));
@@ -217,7 +214,7 @@ public class Charts extends AppCompatActivity {
                         function10 = Float.parseFloat(String.valueOf(girlsHeight18_10(x)));
                         function3 = Float.parseFloat(String.valueOf(girlsHeight18_3(x)));
 
-                        x = x + 1.0;
+                        x = x + 0.1;
 
                         yAX97.add(new Entry(i, function97));
                         yAX90.add(new Entry(i, function90));
@@ -226,73 +223,67 @@ public class Charts extends AppCompatActivity {
                         yAX25.add(new Entry(i, function25));
                         yAX10.add(new Entry(i, function10));
                         yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
                     }
                 }
             }
         }else{ //charts of WEIGHT
-            if (sex.equals("męska")) { //charts for boys weight
-                if (ageAmount == 0) { //less than 1 year old
-                    Entry c1e1 = new Entry(monthsAmount, weightAmount);
-                    yAXpoint.add(c1e1);
+            //charts for boys weight
+            if (sex.equals("męska")) if (ageAmount == 0) { //less than 1 year old
+                Entry c1e1 = new Entry(monthsAmount, weightAmount);
+                yAXpoint.add(c1e1);
 
-                    values = 12;
-                    for (int i = 0; i < values; i++) {
-                        function97 = Float.parseFloat(String.valueOf(boysWeight12_97(x)));
-                        function90 = Float.parseFloat(String.valueOf(boysWeight12_90(x)));
-                        function75 = Float.parseFloat(String.valueOf(boysWeight12_75(x)));
-                        function50 = Float.parseFloat(String.valueOf(boysWeight12_50(x)));
-                        function25 = Float.parseFloat(String.valueOf(boysWeight12_25(x)));
-                        function10 = Float.parseFloat(String.valueOf(boysWeight12_10(x)));
-                        function3 = Float.parseFloat(String.valueOf(boysWeight12_3(x)));
+                values = 12;
+                for (float i = 1; x < values; i = i + add) {
+                    function97 = Float.parseFloat(String.valueOf(boysWeight12_97(x)));
+                    function90 = Float.parseFloat(String.valueOf(boysWeight12_90(x)));
+                    function75 = Float.parseFloat(String.valueOf(boysWeight12_75(x)));
+                    function50 = Float.parseFloat(String.valueOf(boysWeight12_50(x)));
+                    function25 = Float.parseFloat(String.valueOf(boysWeight12_25(x)));
+                    function10 = Float.parseFloat(String.valueOf(boysWeight12_10(x)));
+                    function3 = Float.parseFloat(String.valueOf(boysWeight12_3(x)));
 
-                        x = x + 1.0;
+                    x = x + 0.1;
 
-                        yAX97.add(new Entry(i, function97));
-                        yAX90.add(new Entry(i, function90));
-                        yAX75.add(new Entry(i, function75));
-                        yAX50.add(new Entry(i, function50));
-                        yAX25.add(new Entry(i, function25));
-                        yAX10.add(new Entry(i, function10));
-                        yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
-                    }
-                } else {//boys weight 1-18 years
-                    Entry c1e1 = new Entry(ageAmount, weightAmount);
-                    yAXpoint.add(c1e1);
-
-                    values = 18;
-                    for (int i = 0; i < values; i++) {
-                        function97 = Float.parseFloat(String.valueOf(boysWeight18_97(x)));
-                        function90 = Float.parseFloat(String.valueOf(boysWeight18_90(x)));
-                        function75 = Float.parseFloat(String.valueOf(boysWeight18_75(x)));
-                        function50 = Float.parseFloat(String.valueOf(boysWeight18_50(x)));
-                        function25 = Float.parseFloat(String.valueOf(boysWeight18_25(x)));
-                        function10 = Float.parseFloat(String.valueOf(boysWeight18_10(x)));
-                        function3 = Float.parseFloat(String.valueOf(boysWeight18_3(x)));
-
-                        x = x + 1.0;
-
-                        yAX97.add(new Entry(i, function97));
-                        yAX90.add(new Entry(i, function90));
-                        yAX75.add(new Entry(i, function75));
-                        yAX50.add(new Entry(i, function50));
-                        yAX25.add(new Entry(i, function25));
-                        yAX10.add(new Entry(i, function10));
-                        yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
-                    }
+                    yAX97.add(new Entry(i, function97));
+                    yAX90.add(new Entry(i, function90));
+                    yAX75.add(new Entry(i, function75));
+                    yAX50.add(new Entry(i, function50));
+                    yAX25.add(new Entry(i, function25));
+                    yAX10.add(new Entry(i, function10));
+                    yAX3.add(new Entry(i, function3));
                 }
-            } else { //charts for girls weight
+            } else {//boys weight 1-18 years
+                Entry c1e1 = new Entry(ageAmount, weightAmount);
+                yAXpoint.add(c1e1);
+
+                values = 17;
+                for (float i = 1; x < values; i = i + add) {
+                    function97 = Float.parseFloat(String.valueOf(boysWeight18_97(x)));
+                    function90 = Float.parseFloat(String.valueOf(boysWeight18_90(x)));
+                    function75 = Float.parseFloat(String.valueOf(boysWeight18_75(x)));
+                    function50 = Float.parseFloat(String.valueOf(boysWeight18_50(x)));
+                    function25 = Float.parseFloat(String.valueOf(boysWeight18_25(x)));
+                    function10 = Float.parseFloat(String.valueOf(boysWeight18_10(x)));
+                    function3 = Float.parseFloat(String.valueOf(boysWeight18_3(x)));
+
+                    x = x + 0.1;
+
+                    yAX97.add(new Entry(i, function97));
+                    yAX90.add(new Entry(i, function90));
+                    yAX75.add(new Entry(i, function75));
+                    yAX50.add(new Entry(i, function50));
+                    yAX25.add(new Entry(i, function25));
+                    yAX10.add(new Entry(i, function10));
+                    yAX3.add(new Entry(i, function3));
+                }
+            }
+            else { //charts for girls weight
                 if (ageAmount == 0) { //less that 1 year
                     Entry c1e1 = new Entry(monthsAmount, weightAmount);
                     yAXpoint.add(c1e1);
 
                     values = 12;
-                    for (int i = 0; i < values; i++) {
+                    for (float i = 1; x < values; i = i+add) {
                         function97 = Float.parseFloat(String.valueOf(girlsWeight12_97(x)));
                         function90 = Float.parseFloat(String.valueOf(girlsWeight12_90(x)));
                         function75 = Float.parseFloat(String.valueOf(girlsWeight12_75(x)));
@@ -301,7 +292,7 @@ public class Charts extends AppCompatActivity {
                         function10 = Float.parseFloat(String.valueOf(girlsWeight12_10(x)));
                         function3 = Float.parseFloat(String.valueOf(girlsWeight12_3(x)));
 
-                        x = x + 1.0;
+                        x = x + 0.1;
 
                         yAX97.add(new Entry(i, function97));
                         yAX90.add(new Entry(i, function90));
@@ -310,15 +301,13 @@ public class Charts extends AppCompatActivity {
                         yAX25.add(new Entry(i, function25));
                         yAX10.add(new Entry(i, function10));
                         yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
                     }
                 } else { //girls weight 1-18 years
                     Entry c1e1 = new Entry(ageAmount, weightAmount);
                     yAXpoint.add(c1e1);
 
-                    values = 18;
-                    for (int i = 0; i < values; i++) {
+                    values = 17;
+                    for (float i = 1; x < values; i = i+add) {
                         function97 = Float.parseFloat(String.valueOf(girlsWeight18_97(x)));
                         function90 = Float.parseFloat(String.valueOf(girlsWeight18_90(x)));
                         function75 = Float.parseFloat(String.valueOf(girlsWeight18_75(x)));
@@ -327,7 +316,7 @@ public class Charts extends AppCompatActivity {
                         function10 = Float.parseFloat(String.valueOf(girlsWeight18_10(x)));
                         function3 = Float.parseFloat(String.valueOf(girlsWeight18_3(x)));
 
-                        x = x + 1.0;
+                        x = x + 0.1;
 
                         yAX97.add(new Entry(i, function97));
                         yAX90.add(new Entry(i, function90));
@@ -336,8 +325,6 @@ public class Charts extends AppCompatActivity {
                         yAX25.add(new Entry(i, function25));
                         yAX10.add(new Entry(i, function10));
                         yAX3.add(new Entry(i, function3));
-
-                        xAXES.add(i, String.valueOf(x));
                     }
                 }
             }
@@ -391,14 +378,6 @@ public class Charts extends AppCompatActivity {
         lineDataSet5.setDrawValues(false);
         lineDataSet6.setDrawValues(false);
         lineDataSet7.setDrawValues(false);
-
-        lineDataSet1.setHighlightEnabled(true);
-        lineDataSet2.setHighlightEnabled(true);
-        lineDataSet3.setHighlightEnabled(true);
-        lineDataSet4.setHighlightEnabled(true);
-        lineDataSet5.setHighlightEnabled(true);
-        lineDataSet6.setHighlightEnabled(true);
-        lineDataSet7.setHighlightEnabled(true);
 
         lineChart.setData(new LineData(lineDataSets));
     }
